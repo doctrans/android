@@ -1085,12 +1085,13 @@ function requestAppendHL(uri) {
 
 
 function changeNavLang(lang) {
-  var $links = $("#devdoc-nav,#header,#nav-x,.training-nav-top,.content-footer").find("a["+lang+"-lang]");
+  var $links = $("#devdoc-nav,#header,#nav-x,#body-content,.training-nav-top,.content-footer").find("*["+lang+"-lang]");
   $links.each(function(i){ // for each link with a translation
     var $link = $(this);
     if (lang != "en") { // No need to worry about English, because a language change invokes new request
       // put the desired language from the attribute as the text
-      $link.text($link.attr(lang+"-lang"))
+      //$link.text($link.attr(lang+"-lang"))
+      $link.empty().append($link.attr(lang+"-lang"))
     }
   });
 }
